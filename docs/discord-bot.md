@@ -11,10 +11,8 @@ simplest examples: `on_ready` and `on_command_error`.
 
 Each feature area is a `commands.Cog` in `app/bot/commands/`:
 
-- `basic.py` — `/start`, `/help`, `/status`, `/clear`
+- `basic.py` — `/start`, `/help`, `/status`
 - `ai_commands.py` — `/ask`
-- `rag_commands.py` — `/document`, `/summary`, `/quiz`, `/flashcards`
-- `reminder_commands.py` — `/remind`
 
 Cogs are registered in `StudyBot.setup_hook()` (`app/bot/bot.py`), which
 also calls `self.tree.sync()` to publish the slash commands to Discord.
@@ -39,9 +37,3 @@ Discord messages are capped at 2000 characters. `app/utils/discord_helpers.
 split_for_discord()` breaks long AI output into multiple messages, splitting
 on paragraph/line boundaries where possible so answers stay readable.
 
-## Attachments for `/document`
-
-`/document` accepts a `discord.Attachment`, saves it to a temporary file,
-and passes that path straight into `RAGService.ingest()` — the same
-function used by the CLI ingestion command — so there is only one ingestion
-code path to explain and test.
