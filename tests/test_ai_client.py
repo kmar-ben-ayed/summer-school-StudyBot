@@ -11,10 +11,6 @@ def make_settings(hf_api_key=None) -> Settings:
         discord_token="token",
         hf_api_key=hf_api_key,
         hf_model="meta-llama/Llama-3.1-8B-Instruct",
-        embedding_model="all-MiniLM-L6-v2",
-        chunk_size=800,
-        chunk_overlap=120,
-        top_k=4,
         log_level="INFO",
     )
 

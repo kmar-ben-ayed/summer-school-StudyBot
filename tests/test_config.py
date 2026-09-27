@@ -11,7 +11,6 @@ def test_defaults_when_env_missing(monkeypatch):
     assert settings.has_discord_token is False
     assert settings.has_hf_key is False
     assert settings.hf_model  # has a sensible default
-    assert settings.chunk_size > 0
 
 
 def test_settings_read_env_vars(monkeypatch):

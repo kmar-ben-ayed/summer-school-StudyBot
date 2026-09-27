@@ -1,5 +1,5 @@
 """
-/ask — general or RAG-augmented question answering.
+/ask: general question answering.
 """
 from __future__ import annotations
 
@@ -26,18 +26,8 @@ class AICommands(commands.Cog):
         state = self.bot.state
 
         try:
-            context_chunks = []
-            if state.rag_service.has_indexed_material():
-                context_chunks = state.rag_service.get_context(
-                    question, top_k=state.settings.top_k
-                )
-
-            if context_chunks:
-                answer = state.ai_service.answer_with_context(question, context_chunks)
-                reply = f" **According to your course material:**\n\n{answer}"
-            else:
-                answer = state.ai_service.answer_general(question)
-                reply = f"{answer}"
+            answer = state.ai_service.answer_general(question)
+            reply = f"{answer}"
 
         except ConfigError as exc:
             await interaction.followup.send(f"{exc}")

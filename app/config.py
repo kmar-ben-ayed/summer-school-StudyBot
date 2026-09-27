@@ -36,14 +36,7 @@ class Settings:
     hf_api_key: Optional[str]
     hf_model: str
 
-    # --- sentence-transformers (local embeddings, no key needed) ---
-    embedding_model: str
-
-    # --- RAG ---
-    chunk_size: int
-    chunk_overlap: int
-    top_k: int
-
+    
     # --- Misc ---
     log_level: str
 
@@ -63,17 +56,12 @@ def load_settings() -> Settings:
     This function never raises for *missing* keys — the bot should still be
     importable and testable without any secrets configured. Instead, callers
     check `has_discord_token` / `has_hf_key` and fail gracefully at the point
-    where the missing value is actually needed. Embeddings never need a key
-    at all, since sentence-transformers runs locally.
+    where the missing value is actually needed. 
     """
     return Settings(
         discord_token=os.getenv("DISCORD_TOKEN") or None,
         hf_api_key=os.getenv("HF_API_KEY") or None,
         hf_model=os.getenv("HF_MODEL", "meta-llama/Llama-3.1-8B-Instruct"),
-        embedding_model=os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2"),
-        chunk_size=int(os.getenv("CHUNK_SIZE", "800")),
-        chunk_overlap=int(os.getenv("CHUNK_OVERLAP", "120")),
-        top_k=int(os.getenv("RAG_TOP_K", "4")),
         log_level=os.getenv("LOG_LEVEL", "INFO"),
     )
 
