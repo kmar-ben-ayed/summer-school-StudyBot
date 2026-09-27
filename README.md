@@ -161,9 +161,9 @@ with a `FakeAIClient` in `tests/conftest.py`.
 
 | Checkpoint | What it demonstrates | Key files |
 |---|---|---|
-| 1 — Basic Discord bot | Events, slash commands | `app/bot/bot.py`, `app/bot/commands/basic.py` |
-| 2 — AI-powered bot | Calling an LLM API, prompt engineering | `app/ai/client.py`, `app/ai/prompts.py`, `app/bot/commands/ai_commands.py` |
-| "" — Final project | Everything wired together, error handling, tests | whole repo |
+| Basic Discord bot | Events, slash commands | `app/bot/bot.py`, `app/bot/commands/basic.py` |
+| AI-powered bot | Calling an LLM API, prompt engineering | `app/ai/client.py`, `app/ai/prompts.py`, `app/bot/commands/ai_commands.py` |
+| Final project | Everything wired together, error handling, tests | whole repo |
 
 
 ## Project structure
